@@ -1,15 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Lobster } from "next/font/google";
+import { Ubuntu } from "next/font/google";
 import "./globals.css";
 
-import { Bokor } from "next/font/google";
-
-const bokor = Bokor({
-  subsets: ["latin"],
-  weight: "400",
-});
-
-const lobster = Lobster({
+const ubuntu = Ubuntu({
   subsets: ["latin"],
   weight: "400",
 });
@@ -26,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${lobster.style} ${lobster.className} antialiased`}>
+      <body className={`${ubuntu.style} ${ubuntu.className} antialiased`}>
         {children}
       </body>
     </html>
