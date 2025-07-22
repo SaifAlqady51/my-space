@@ -10,12 +10,13 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --text-tiny: 0.625rem;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background-gradient: linear-gradient(135deg, #1d4e89, #172a3a);
-    --foreground: #ededed;
+    --background-gradient: linear-gradient(150deg, #020618, #0f172b);
+    --foreground: #b69121;
   }
 }
 
