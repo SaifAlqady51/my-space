@@ -1,8 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  --background-gradient: linear-gradient(135deg, #fcfffd, #a9f8fb);
-  --foreground: #171717;
+  --background-gradient: linear-gradient(150deg, #020618, #0f172b);
+  --foreground: #fcefb4;
+  --hover-text: #fdf8e1;
+  --main-px: 24rem;
 }
 
 @theme inline {
@@ -11,13 +13,6 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --text-tiny: 0.625rem;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background-gradient: linear-gradient(150deg, #020618, #0f172b);
-    --foreground: #b69121;
-  }
 }
 
 body {
