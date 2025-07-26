@@ -8,7 +8,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#1d4e89", // Direct color assignment
+        primary: "#1d4e89",
+        secondary: "#a47e1b",
       },
       animation: {
         "fade-in": "fadeIn 1s ease-in-out",
