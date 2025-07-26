@@ -5,7 +5,7 @@ import { OwlIcon } from "@/icons";
 
 export const Header = () => {
   return (
-    <div className="w-full h-16 bg-inherit border-b border-white/10 flex md:justify-between justify-center shadow-lg lg:px-52 px-8 sticky top-0 z-50">
+    <div className="w-full h-16 bg-slate-950 border-b border-white/10 flex md:justify-between justify-center shadow-lg lg:px-[var(--main-px)] px-8  top-0 z-50">
       <Link className="flex items-center" href="/">
         <OwlIcon />
         <h1 className="text-2xl font-bold">Safe Space</h1>

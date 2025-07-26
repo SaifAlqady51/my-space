@@ -3,7 +3,7 @@ import { NAVLIST } from "./data/nav-list";
 
 export const Footer = () => {
   return (
-    <div className="flex justify-between sticky bottom-0 shadow-black shadow-2xl  md:hidden w-full">
+    <div className="flex justify-between fixed bottom-0 shadow-black shadow-2xl  md:hidden w-full bg-slate-950 ">
       {NAVLIST.map((item, idx) => (
         <Link
           href={item.link}
