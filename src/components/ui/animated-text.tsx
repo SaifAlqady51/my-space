@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
 type AnimatedTextProps = {
@@ -9,6 +9,7 @@ type AnimatedTextProps = {
   hoverEffect?: boolean;
   className?: string;
   delay?: number;
+  threshold?: number; // Add threshold prop
 } & React.HTMLAttributes<HTMLDivElement>;
 
 const AnimatedText = ({
@@ -17,11 +18,39 @@ const AnimatedText = ({
   hoverEffect = false,
   className = "",
   delay = 0,
+  threshold = 0.2, // Default threshold: 20% of the element is visible
   ...props
 }: AnimatedTextProps) => {
   const textRef = useRef<HTMLDivElement>(null);
+  const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
+    const element = textRef.current;
+    if (!element || hasAnimated) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animateText();
+            observer.unobserve(element); // Stop observing after animation
+            setHasAnimated(true);
+          }
+        });
+      },
+      {
+        threshold: threshold,
+      },
+    );
+
+    observer.observe(element);
+
+    return () => {
+      if (element) observer.unobserve(element);
+    };
+  }, [animationType, hoverEffect, delay, threshold, hasAnimated]);
+
+  const animateText = () => {
     const element = textRef.current;
     if (!element) return;
 
@@ -108,7 +137,7 @@ const AnimatedText = ({
         element.removeEventListener("mouseleave", hoverOutAnimation);
       };
     }
-  }, [animationType, hoverEffect, delay]);
+  };
 
   return (
     <div ref={textRef} className={className} {...props}>
