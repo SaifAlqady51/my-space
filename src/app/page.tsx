@@ -1,43 +1,30 @@
-import AnimatedText from "@/components/ui/animated-text";
-import Image from "next/image";
-import Space from "../../public/space.jpg";
+import InfoSection from "@/components/home/info-section";
+import JobHistoryTimeline from "@/components/home/job-history-timeline";
+import Map from "@/components/world-map";
+import { INFO_DATA } from "@/data";
 
 export default function Main() {
-  const getTimeBasedGreeting = () => {
-    const hour = new Date().getHours();
-
-    if (hour < 12) return "Good Morning";
-    if (hour < 18) return "Good Afternoon";
-    return "Good Evening";
-  };
-
   return (
-    <main className="">
-      <div className="flex flex-col md:flex-row md:items-start items-center  justify-center h-screen py-16 gap-12 px-4 ">
-        <div className=" flex flex-col md:items-start items-center space-y-8 h-full">
-          <AnimatedText
-            animationType="fadeUp"
-            className="md:text-5xl text-2xl md:text-left text-center  font-semibold leading-snug whitespace-pre md:mt-20 mt-12 "
-          >
-            {`${getTimeBasedGreeting()}, I'm Saif Alqady\nand this is my SPACE`}
-          </AnimatedText>
-          <AnimatedText
-            delay={0.6}
-            animationType="fadeUp"
-            className="text-md  font-light whitespace-pre-line"
-          >
-            {`I share here my work, my thoughts, my experiments, and
-          more—exploring ideas,\ndocumenting progress, and reflecting on the
-          journey.`}
-          </AnimatedText>
-        </div>
-
-        <Image
-          src={Space}
-          alt="space-image"
-          width={500}
-          className="rounded-2xl"
-        />
+    <main className="  xl:py-16 py-10 xl:space-y-36 gap-12 px-4  xl:mt-12">
+      <div className="space-y-24">
+        {INFO_DATA.map((section) => (
+          <InfoSection
+            key={section.id}
+            imageSrc={section.imageSrc}
+            imageAlt={section.imageAlt}
+            title={section.title}
+            subTitle={section.subTitle}
+            description={section.description}
+            imagePosition={section.imagePosition}
+          />
+        ))}
+      </div>
+      <JobHistoryTimeline />
+      <div className=" flex flex-col justify-center items-center ">
+        <h3 className="text-title font-bold text-center mb-4">
+          {`Countries I'v worked in (remotely)`}
+        </h3>
+        <Map />
       </div>
     </main>
   );
