@@ -1,5 +1,5 @@
+import { NAVLIST } from "@/data";
 import Link from "next/link";
-import { NAVLIST } from "./data/nav-list";
 
 export const Footer = () => {
   return (
