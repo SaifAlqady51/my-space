@@ -18,7 +18,7 @@ interface WorldTopology extends Topology {
   };
 }
 
-export default function SVGMap() {
+export default function Map() {
   const [dimensions, setDimensions] = useState({
     width: 800,
     height: 400,
@@ -27,12 +27,14 @@ export default function SVGMap() {
   useEffect(() => {
     const handleResize = () => {
       const isMobile = window.innerWidth < 768;
-      const maxWidth = isMobile ? window.innerWidth - 40 : 1000;
-      const aspectRatio = 2; // Consistent aspect ratio
+      const maxWidth = isMobile
+        ? window.innerWidth - 40
+        : window.innerWidth * 0.9;
+      const aspectRatio = isMobile ? 2 : 3;
 
       const containerWidth = Math.min(
         maxWidth,
-        isMobile ? window.innerWidth - 40 : 1000,
+        isMobile ? window.innerWidth - 40 : 1800,
       );
       const containerHeight = containerWidth / aspectRatio;
 
@@ -56,12 +58,12 @@ export default function SVGMap() {
     const centerLon = (8.4689 + 8.2275 + 69.3451) / 3;
     const centerLat = (60.472 + 46.8182 + 30.3753) / 3;
 
-    const scale = dimensions.width / 3.2; // Adjusted scale factor
+    const scale = dimensions.width / 3.2;
 
     const proj = geoMercator()
       .scale(scale)
       .translate([dimensions.width / 2, dimensions.height / 2])
-      .center([centerLon, centerLat]); // Center on average of our locations
+      .center([centerLon, centerLat]);
 
     const path = geoPath().projection(proj);
     return { projection: proj, pathGenerator: path };
@@ -78,8 +80,9 @@ export default function SVGMap() {
       style={{
         width: "100%",
         overflow: "hidden",
-        maxWidth: "1000px",
+        maxWidth: "1400px",
         margin: "0 auto",
+        padding: "0 20px",
       }}
     >
       <svg
@@ -100,7 +103,7 @@ export default function SVGMap() {
           <g id="location-pin">
             <path
               d="M12 2C8.134 2 5 5.134 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.866-3.134-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"
-              fill="#a47e1b"
+              fill="#c9a227"
             />
             <path
               d="M12 2C8.134 2 5 5.134 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.866-3.134-7-7-7z"
@@ -127,22 +130,28 @@ export default function SVGMap() {
               0, 0,
             ];
             const isMobile = dimensions.width < 768;
-            const pinSize = isMobile ? 0.8 : 1;
+
+            const pinScale = isMobile ? 0.7 : 2;
+            const basePinSize = 24;
+            const textOffsetY = 15 * pinScale;
+            const textSize =
+              Math.max(12, dimensions.width / 60) * (isMobile ? 0.9 : 1);
 
             return (
               <g key={location.country} transform={`translate(${x}, ${y})`}>
-                <use
-                  href="#location-pin"
-                  x={-12 * pinSize}
-                  y={-24 * pinSize}
-                  width={24 * pinSize}
-                  height={24 * pinSize}
-                />
+                <g transform={`scale(${pinScale})`}>
+                  <path
+                    d="M12 2C8.134 2 5 5.134 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.866-3.134-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"
+                    fill="#c9a227"
+                    transform={`translate(${-basePinSize / 2}, ${-basePinSize})`}
+                  />
+                </g>
+
                 <text
                   x="0"
-                  y={10 * pinSize}
-                  fontSize={Math.max(10, dimensions.width / 50)}
-                  fill="#a47e1b"
+                  y={textOffsetY}
+                  fontSize={textSize}
+                  fill="#c9a227"
                   fontWeight="bold"
                   textAnchor="middle"
                 >
