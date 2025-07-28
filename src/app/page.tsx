@@ -5,7 +5,7 @@ import { INFO_DATA } from "@/data";
 
 export default function Main() {
   return (
-    <main className="  xl:py-16 py-10 xl:space-y-36 gap-12 px-4  xl:mt-12">
+    <main className="  xl:py-16 py-10 xl:space-y-36 gap-12 md:px-12 px-4 xl:px-52  xl:mt-12">
       <div className="space-y-24">
         {INFO_DATA.map((section) => (
           <InfoSection
