@@ -6,6 +6,18 @@
   --hover-text: #fdf8e1;
   --main-px: 14.5rem;
   --color-gold: #c9a227;
+  --color-secondary: #a855f7;
+
+  --gold-50: #fffdf5;
+  --gold-100: #fdf8e1;
+  --gold-200: #fcefb4;
+  --gold-300: #f8e38a;
+  --gold-400: #e8c95a;
+  --gold-500: #c9a227;
+  --gold-600: #b08d22;
+  --gold-700: #8a6e1b;
+  --gold-800: #5c4a12;
+  --gold-900: #332a0a;
 }
 
 @theme inline {
@@ -16,6 +28,17 @@
   --text-tiny: 0.625rem;
   --text-2_5xl: 1.6875rem;
   --color-gold: var(--color-gold);
+  --colro-secondary: var(--color-secondary);
+  --color-gold-50: var(--gold-50);
+  --color-gold-100: var(--gold-100);
+  --color-gold-200: var(--gold-200);
+  --color-gold-300: var(--gold-300);
+  --color-gold-400: var(--gold-400);
+  --color-gold-500: var(--gold-500);
+  --color-gold-600: var(--gold-600);
+  --color-gold-700: var(--gold-700);
+  --color-gold-800: var(--gold-800);
+  --color-gold-900: var(--gold-900);
 }
 
 body {
