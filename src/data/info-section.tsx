@@ -1,7 +1,7 @@
-import { getTimeBasedGreeting } from "@/app/helpers/get-time-based-greeting";
 import Space from "@assets/space.jpg";
 import LockIn from "@assets/Locked-in_3.jpg";
 import { InfoSectionProps } from "@/components/home";
+import { getTimeBasedGreeting } from "@/helpers/get-time-based-greeting";
 
 export const INFO_DATA: (InfoSectionProps & { id: number })[] = [
   {
