@@ -5,17 +5,19 @@ import React, { ReactNode, useEffect, useRef, useState } from "react";
 interface AnimatedTextProps {
   children: ReactNode;
   className?: string;
-  delay?: number; // in milliseconds
-  duration?: number; // in milliseconds
-  threshold?: number; // 0-1, how much of the element must be visible to trigger
+  delay?: number;
+  yOffset?: number;
+  duration?: number;
+  easing?: string;
 }
 
 const AnimatedText: React.FC<AnimatedTextProps> = ({
   children,
   className = "",
   delay = 0,
-  duration = 500,
-  threshold = 0.1,
+  yOffset = 40,
+  duration = 1000,
+  easing = "cubic-bezier(0.22, 1, 0.36, 1)", // Beautiful "overshoot" curve
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const elementRef = useRef<HTMLDivElement>(null);
@@ -24,38 +26,38 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true);
-          // Optional: Unobserve after animation triggers to improve performance
+          setTimeout(() => setIsVisible(true), delay);
           observer.unobserve(entry.target);
         }
       },
-      { threshold },
+      {
+        threshold: 0.1,
+        rootMargin: "0px 0px -15% 0px", // Trigger when 15% from viewport bottom
+      },
     );
 
-    if (elementRef.current) {
-      observer.observe(elementRef.current);
-    }
+    const current = elementRef.current;
+    if (current) observer.observe(current);
 
     return () => {
-      if (elementRef.current) {
-        observer.unobserve(elementRef.current);
-      }
+      if (current) observer.unobserve(current);
     };
-  }, [threshold]);
-
-  // Convert duration and delay from ms to seconds for CSS
-  const durationInSeconds = duration / 1000;
-  const delayInSeconds = delay / 1000;
+  }, [delay]);
 
   return (
     <div
       ref={elementRef}
-      className={`opacity-0 transform translate-y-4 ${className} ${isVisible ? "animate-fade-up" : ""
-        }`}
+      className={`will-change-transform ${className}`}
       style={{
-        animation: isVisible
-          ? `fadeInUp ${durationInSeconds}s ease-out ${delayInSeconds}s forwards`
-          : "none",
+        opacity: isVisible ? 1 : 0,
+        transform: isVisible
+          ? "translateY(0) translateZ(0)"
+          : `translateY(${yOffset}px) translateZ(0)`,
+        transition: `
+          opacity ${duration}ms ${easing} ${delay}ms,
+          transform ${duration}ms ${easing} ${delay}ms
+        `,
+        backfaceVisibility: "hidden", // Fixes flickering in some browsers
       }}
     >
       {children}

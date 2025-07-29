@@ -53,7 +53,7 @@ export const InfoSection: React.FC<InfoSectionProps> = ({
 
         {subTitle && (
           <AnimatedText
-            delay={animationDelay + 600}
+            delay={animationDelay + 500}
             className="xl:text-2_5xl md:text-2xl text-center xl:text-start text-lg font-light"
           >
             {subTitle}
@@ -61,7 +61,7 @@ export const InfoSection: React.FC<InfoSectionProps> = ({
         )}
 
         <AnimatedText
-          delay={animationDelay + 1000}
+          delay={animationDelay + 700}
           className="xl:text-lg md:text-md text-center xl:text-start text-sm font-light"
         >
           {description}
