@@ -1,8 +1,8 @@
-import { IoMdHome } from "react-icons/io";
-import { IoMdCall } from "react-icons/io";
-import { FaInfo } from "react-icons/fa6";
+import { LuNotebookText } from "react-icons/lu";
+import { GrProjects } from "react-icons/gr";
+import { FiHome } from "react-icons/fi";
 export const NAVLIST = [
-  { name: "Home", link: "/", icon: <IoMdHome /> },
-  { name: "Projects", link: "/projects", icon: <FaInfo /> },
-  { name: "Blog", link: "/blog", icon: <IoMdCall /> },
+  { name: "Home", link: "/", icon: <FiHome /> },
+  { name: "Projects", link: "/projects", icon: <GrProjects /> },
+  { name: "Blog", link: "/blog", icon: <LuNotebookText /> },
 ];

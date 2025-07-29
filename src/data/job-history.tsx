@@ -5,9 +5,9 @@ export const JOB_HISTORY: JobExperience[] = [
     id: "1",
     title: "Frontend Developer",
     company: "EVVENT AS",
-    location: "Remote",
-    startDate: "2019-01",
-    endDate: "2020-05",
+    location: "Norway (Remote)",
+    startDate: "2023-12",
+    endDate: "2024-04",
     description:
       "Developed and maintained responsive web applications using Next.js, TypeScript, and Tailwind CSS. Implemented modern frontend architectures to deliver high-performance, maintainable code. Collaborated with design and backend teams to create seamless user experiences. Followed best practices for code quality, testing, and accessibility while meeting project deadlines.",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "React", "Git"],
@@ -15,15 +15,16 @@ export const JOB_HISTORY: JobExperience[] = [
   },
   {
     id: "2",
-    title: "Full Stack Developer (Freelance)",
+    title: "Full Stack Developer ",
     company: "UPWORK ",
     location: "Remote",
-    startDate: "2020-06",
-    endDate: "2022-02",
+    startDate: "2024-06",
+    endDate: "2025-07",
     description:
-      "Delivered full-stack solutions for multiple clients with 1000+ billed hours. Specialized in building scalable web applications using Next.js and TypeScript. Designed and implemented GraphQL APIs with Apollo Server, and integrated event-driven architectures using Kafka. Collaborated with cross-functional teams to develop microservices that improved system performance by 30%.",
+      "Developed and maintained full-stack applications, transforming legacy systems into scalable microservices using Next.js, NestJS, and TypeScript. Designed event-driven architectures for real-time data processing and deployed containerized services on Kubernetes to enhance reliability and scalability. Led optimizations across frontend and backend systems, improving performance and maintainability while modernizing deployment workflows",
     technologies: [
       "Next.js",
+      "NestJS",
       "TypeScript",
       "GraphQL",
       "Node.js",
@@ -32,8 +33,8 @@ export const JOB_HISTORY: JobExperience[] = [
       "Docker",
       "AWS",
       "React",
-      "Vue.js",
     ],
     link: "#",
+    isCurrentJob: true,
   },
 ];
