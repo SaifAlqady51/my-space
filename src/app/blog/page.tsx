@@ -1,9 +1,9 @@
-import CommingSoon from "@/components/ui/comming-soon";
+import ComingSoon from "@/components/ui/coming-soon";
 
 export default function BlogPage() {
   return (
     <div>
-      <CommingSoon pageName="Blog" />
+      <ComingSoon pageName="Blog" />
     </div>
   );
 }
