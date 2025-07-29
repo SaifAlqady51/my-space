@@ -1,7 +1,7 @@
 import Space from "@assets/space.jpg";
 import LockIn from "@assets/Locked-in_3.jpg";
 import { InfoSectionProps } from "@/components/home";
-import { getTimeBasedGreeting } from "@/helpers/get-time-based-greeting";
+import { getTimeBasedGreeting } from "@/helpers";
 
 export const INFO_DATA: (InfoSectionProps & { id: number })[] = [
   {
@@ -21,7 +21,7 @@ export const INFO_DATA: (InfoSectionProps & { id: number })[] = [
     title: "Who Am I?",
     subTitle: "Still figuring that out — but I know what I do",
     description:
-      "Web developer by day, amateur chess player by night—I thrive on clean code that reads like poetry and systems that don't crumble under pressure. Mobile-friendly design, maintainable architecture, and thoughtful scalability matter to me because building things right beats midnight firefighting. On the backend, I focus on efficient queries, well-structured APIs, and reliable error handling—because even the best ideas fail without a solid foundation. Let's build something that works, lasts, and (ideally) doesn't keep us awake at 3 AM.",
+      "Web developer by day, amateur chess player by night—I thrive on clean code that reads like poetry and systems that don't crumble under pressure. Mobile-friendly design, maintainable architecture, and thoughtful scalability matter to me because building things right beats midnight firefighting. On the backend, I focus on efficient queries, well-structured APIs, and reliable error handling—because even the best ideas fail without a solid foundation. Let’s build something that works, lasts, and—ideally—doesn’t require a ‘how did this ever work?’ postmortem.",
     imagePosition: "left",
   },
 ];
