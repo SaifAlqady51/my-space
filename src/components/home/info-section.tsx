@@ -46,7 +46,7 @@ const InfoSection: React.FC<InfoSectionProps> = ({
       >
         <AnimatedText
           animationType="fadeUp"
-          className="text-title xl:text-left text-center font-semibold  xl:mt-20 mt-0"
+          className="text-title xl:text-left text-center font-semibold  xl:mt-20 mt-0 leading-snug"
         >
           {title}
         </AnimatedText>
