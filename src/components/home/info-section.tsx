@@ -17,7 +17,7 @@ export interface InfoSectionProps {
   imageClassName?: string;
 }
 
-const InfoSection: React.FC<InfoSectionProps> = ({
+export const InfoSection: React.FC<InfoSectionProps> = ({
   imageSrc,
   imageAlt,
   imageWidth = 500,
@@ -45,7 +45,7 @@ const InfoSection: React.FC<InfoSectionProps> = ({
         )}
       >
         <AnimatedText
-          animationType="fadeUp"
+          delay={animationDelay}
           className="text-title xl:text-left text-center font-semibold  xl:mt-20 mt-0 leading-snug"
         >
           {title}
@@ -53,8 +53,7 @@ const InfoSection: React.FC<InfoSectionProps> = ({
 
         {subTitle && (
           <AnimatedText
-            delay={animationDelay + 0.6}
-            animationType="fadeUp"
+            delay={animationDelay + 600}
             className="xl:text-2_5xl md:text-2xl text-center xl:text-start text-lg font-light"
           >
             {subTitle}
@@ -62,8 +61,7 @@ const InfoSection: React.FC<InfoSectionProps> = ({
         )}
 
         <AnimatedText
-          delay={animationDelay + 1}
-          animationType="fadeUp"
+          delay={animationDelay + 1000}
           className="xl:text-lg md:text-md text-center xl:text-start text-sm font-light"
         >
           {description}
@@ -83,5 +81,3 @@ const InfoSection: React.FC<InfoSectionProps> = ({
     </div>
   );
 };
-
-export default InfoSection;
