@@ -22,6 +22,7 @@ export default function Map() {
   const [dimensions, setDimensions] = useState({
     width: 800,
     height: 400,
+    scale: 6,
   });
 
   useEffect(() => {
@@ -30,7 +31,7 @@ export default function Map() {
       const maxWidth = isMobile
         ? window.innerWidth - 40
         : window.innerWidth * 0.9;
-      const aspectRatio = isMobile ? 2 : 3;
+      const aspectRatio = isMobile ? 2 : 5;
 
       const containerWidth = Math.min(
         maxWidth,
@@ -38,9 +39,12 @@ export default function Map() {
       );
       const containerHeight = containerWidth / aspectRatio;
 
+      const scale = isMobile ? dimensions.width / 5 : dimensions.width / 3;
+
       setDimensions({
         width: containerWidth,
         height: containerHeight,
+        scale: scale,
       });
     };
 
@@ -58,10 +62,8 @@ export default function Map() {
     const centerLon = (8.4689 + 8.2275 + 69.3451) / 3;
     const centerLat = (60.472 + 46.8182 + 30.3753) / 3;
 
-    const scale = dimensions.width / 3.2;
-
     const proj = geoMercator()
-      .scale(scale)
+      .scale(dimensions.scale)
       .translate([dimensions.width / 2, dimensions.height / 2])
       .center([centerLon, centerLat]);
 
@@ -77,12 +79,14 @@ export default function Map() {
 
   return (
     <div
+      className="shadow-white drop-shadow-xl "
       style={{
         width: "100%",
         overflow: "hidden",
         maxWidth: "1400px",
         margin: "0 auto",
         padding: "0 20px",
+        marginBottom: "30px",
       }}
     >
       <svg
@@ -135,7 +139,7 @@ export default function Map() {
             const basePinSize = 24;
             const textOffsetY = 15 * pinScale;
             const textSize =
-              Math.max(12, dimensions.width / 60) * (isMobile ? 0.9 : 1);
+              Math.max(12, dimensions.width / 60) * (isMobile ? 1 : 0.8);
 
             return (
               <g key={location.country} transform={`translate(${x}, ${y})`}>
