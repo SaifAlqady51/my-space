@@ -1,6 +1,8 @@
-import InfoSection from "@/components/home/info-section";
-import JobHistoryTimeline from "@/components/home/job-history-timeline";
-import Map from "@/components/world-map";
+import {
+  InfoSection,
+  JobHistoryTimeline,
+  WorkHistoryMap,
+} from "@/components/home";
 import { INFO_DATA } from "@/data";
 
 export default function Main() {
@@ -24,7 +26,7 @@ export default function Main() {
         <h3 className="text-title font-bold text-center mb-6">
           {`Countries I'v worked in (remotely)`}
         </h3>
-        <Map />
+        <WorkHistoryMap />
       </div>
     </main>
   );

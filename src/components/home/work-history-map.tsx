@@ -18,7 +18,7 @@ interface WorldTopology extends Topology {
   };
 }
 
-export default function Map() {
+export const WorkHistoryMap = () => {
   const [dimensions, setDimensions] = useState({
     width: 800,
     height: 400,
@@ -168,4 +168,4 @@ export default function Map() {
       </svg>
     </div>
   );
-}
+};

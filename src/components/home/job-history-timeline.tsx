@@ -2,6 +2,7 @@ import { JOB_HISTORY } from "@/data";
 import React from "react";
 import { FaLocationDot } from "react-icons/fa6";
 import { Badge } from "../ui";
+import { formatDate } from "@/helpers";
 
 export interface JobExperience {
   id: string;
@@ -16,7 +17,7 @@ export interface JobExperience {
   link?: string;
 }
 
-const JobHistoryTimeline: React.FC = () => {
+export const JobHistoryTimeline: React.FC = () => {
   return (
     <div className=" bg-inherit py-12 px-4 sm:px-6 lg:px-8">
       <div className=" mx-auto">
@@ -71,22 +72,12 @@ const JobHistoryTimeline: React.FC = () => {
   );
 };
 
-export default JobHistoryTimeline;
-
 interface DateBadgeProps {
   date: string;
   isCurrentJob?: boolean;
 }
 
 const DateBadge: React.FC<DateBadgeProps> = ({ date }) => {
-  const formatDate = (dateString: string): string => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-    });
-  };
-
   return <Badge variant="gold">{formatDate(date)}</Badge>;
 };
 
