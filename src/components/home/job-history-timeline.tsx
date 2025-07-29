@@ -26,7 +26,7 @@ export const JobHistoryTimeline: React.FC = () => {
           {JOB_HISTORY.map((job, index) => {
             const isEven = index % 2 === 0;
             return (
-              <div className="relative mb-16 last:mb-0" key={index}>
+              <div className="relative mb-6 last:mb-0" key={index}>
                 <div className="flex flex-col xl:flex-row items-start xl:items-center">
                   <div className="flex-shrink-0 w-4 xl:w-2/12 flex justify-center order-1 xl:order-none">
                     <div className="w-4 h-4 bg-gold rounded-full border-4 border-gray-200 shadow-lg z-10 relative">
