@@ -3,6 +3,7 @@ import {
   JobHistoryTimeline,
   WorkHistoryMap,
 } from "@/components/home";
+import { ScrollToTopButton } from "@/components/ui";
 import { INFO_DATA } from "@/data";
 
 export default function Main() {
@@ -28,6 +29,7 @@ export default function Main() {
         </h3>
         <WorkHistoryMap />
       </div>
+      <ScrollToTopButton />
     </main>
   );
 }
