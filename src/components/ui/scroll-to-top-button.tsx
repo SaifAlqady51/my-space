@@ -1,14 +1,14 @@
 "use client";
-import { useScrollToTop } from "@/hooks/use-scroll-to-top";
+import { useScrollManager } from "@/hooks/use-scroll-manager";
 import { FaArrowUp } from "react-icons/fa6";
 
 export const ScrollToTopButton = () => {
-  const { isVisible, scrollToTop } = useScrollToTop();
+  const { isAtTop, scrollToTop } = useScrollManager();
 
   return (
     <button
       onClick={scrollToTop}
-      className={`fixed bottom-8 right-8 p-3 rounded-full bg-slate-700 text-white shadow-gray-800 shadow-lg transition-all duration-300 cursor-pointer ${isVisible
+      className={`fixed md:bottom-8 md:right-8 bottom-18 right-4 p-3 rounded-full bg-slate-950 text-gold-500 shadow-gray-800 shadow-md transition-all duration-300 cursor-pointer z-50 ${isAtTop
           ? "opacity-100 hover:bg-slate-800 hover:scale-110"
           : "opacity-0 pointer-events-none"
         }`}

@@ -6,6 +6,8 @@
   --hover-text: #fdf8e1;
   --main-px: 14.5rem;
   --color-gold: #c9a227;
+  --color-success: #80ed99;
+  --color-error: #ff6b6b;
 
   --gold-50: #fffdf5;
   --gold-100: #fdf8e1;
@@ -37,6 +39,8 @@
   --color-gold-700: var(--gold-700);
   --color-gold-800: var(--gold-800);
   --color-gold-900: var(--gold-900);
+  --color-success: var(--color-success);
+  --color-error: var(--color-error);
 }
 
 body {
