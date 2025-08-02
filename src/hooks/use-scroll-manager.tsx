@@ -1,11 +1,19 @@
 "use client";
+
 import { useState, useEffect } from "react";
 
-export const useScrollToTop = () => {
-  const [isVisible, setIsVisible] = useState(false);
+export const useScrollManager = () => {
+  const [isAtTop, setIsAtTop] = useState(false);
+  const [isAtBottom, setIsAtBottom] = useState(false);
 
-  const toggleVisibility = () => {
-    setIsVisible(window.pageYOffset > 300);
+  const checkPositions = () => {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const windowHeight = window.innerHeight;
+    const docHeight = document.documentElement.scrollHeight;
+    const bottomThreshold = 50;
+
+    setIsAtTop(scrollTop > 300);
+    setIsAtBottom(docHeight - (scrollTop + windowHeight) < bottomThreshold);
   };
 
   const scrollToTop = () => {
@@ -35,9 +43,9 @@ export const useScrollToTop = () => {
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", toggleVisibility);
-    return () => window.removeEventListener("scroll", toggleVisibility);
+    window.addEventListener("scroll", checkPositions);
+    return () => window.removeEventListener("scroll", checkPositions);
   }, []);
 
-  return { isVisible, scrollToTop };
+  return { isAtTop, isAtBottom, scrollToTop };
 };
