@@ -2,9 +2,8 @@ import {
   InfoSection,
   JobHistoryTimeline,
   WorkHistoryMap,
-  FeedbackButton,
 } from "@/components/home";
-import { ScrollToTopButton } from "@/components/ui";
+import { FeedBackDialog, ScrollUpButton } from "@/components/layout";
 import { INFO_DATA } from "@/data";
 
 export default function Main() {
@@ -32,8 +31,8 @@ export default function Main() {
           <WorkHistoryMap />
         </div>
       </main>
-      <ScrollToTopButton />
-      <FeedbackButton />
+      <ScrollUpButton />
+      <FeedBackDialog />
     </>
   );
 }
