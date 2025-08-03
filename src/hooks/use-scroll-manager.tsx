@@ -3,17 +3,33 @@
 import { useState, useEffect } from "react";
 
 export const useScrollManager = () => {
-  const [isAtTop, setIsAtTop] = useState(false);
-  const [isAtBottom, setIsAtBottom] = useState(false);
+  const [showOnScrollDown, setShowOnScrollDown] = useState(false);
+  const [hideOnScrollUp, setHideOnScrollUp] = useState(false);
+  const [hideOnScrollDown, setHideOnScrollDown] = useState(true);
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
 
   const checkPositions = () => {
-    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const currentScrollPos =
+      window.scrollY || document.documentElement.scrollTop;
     const windowHeight = window.innerHeight;
     const docHeight = document.documentElement.scrollHeight;
     const bottomThreshold = 50;
 
-    setIsAtTop(scrollTop > 300);
-    setIsAtBottom(docHeight - (scrollTop + windowHeight) < bottomThreshold);
+    setShowOnScrollDown(currentScrollPos > 300);
+
+    const isAtBottom =
+      currentScrollPos + windowHeight >= docHeight - bottomThreshold;
+    setHideOnScrollUp(isAtBottom);
+
+    if (currentScrollPos === 0) {
+      setHideOnScrollDown(true);
+    } else if (currentScrollPos > prevScrollPos) {
+      setHideOnScrollDown(false);
+    } else {
+      setHideOnScrollDown(true);
+    }
+
+    setPrevScrollPos(currentScrollPos);
   };
 
   const scrollToTop = () => {
@@ -45,7 +61,12 @@ export const useScrollManager = () => {
   useEffect(() => {
     window.addEventListener("scroll", checkPositions);
     return () => window.removeEventListener("scroll", checkPositions);
-  }, []);
+  }, [prevScrollPos]);
 
-  return { isAtTop, isAtBottom, scrollToTop };
+  return {
+    showOnScrollDown,
+    hideOnScrollUp,
+    hideOnScrollDown,
+    scrollToTop,
+  };
 };
