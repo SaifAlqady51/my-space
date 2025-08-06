@@ -39,7 +39,7 @@ export const WorkHistoryMap = () => {
       );
       const containerHeight = containerWidth / aspectRatio;
 
-      const scale = isMobile ? dimensions.width / 5 : dimensions.width / 3;
+      const scale = isMobile ? dimensions.width / 2.5 : dimensions.width / 6;
 
       setDimensions({
         width: containerWidth,
@@ -51,7 +51,7 @@ export const WorkHistoryMap = () => {
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [dimensions.width]);
 
   const worldGeo = useMemo(() => {
     const topology = worldTopo as unknown as WorldTopology;
