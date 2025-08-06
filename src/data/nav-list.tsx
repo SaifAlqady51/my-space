@@ -4,5 +4,5 @@ import { FiHome } from "react-icons/fi";
 export const NAVLIST = [
   { name: "Home", link: "/", icon: <FiHome /> },
   { name: "Projects", link: "/projects", icon: <GrProjects /> },
-  { name: "Blog", link: "/blog", icon: <LuNotebookText /> },
+  { name: "Articles", link: "/articles", icon: <LuNotebookText /> },
 ];
