@@ -36,20 +36,61 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
   VariantProps<typeof buttonVariants> {
   asChild?: boolean;
+  href?: string;
+  target?: "_blank" | "_self" | "_parent" | "_top";
+  external?: boolean; // Convenience prop for external links
 }
 
-const CustomButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Button.Slot : "button";
+const CustomButton = React.forwardRef<
+  HTMLButtonElement | HTMLAnchorElement,
+  ButtonProps
+>(
+  (
+    {
+      className,
+      variant,
+      size,
+      asChild = false,
+      href,
+      target,
+      external = false,
+      rel,
+      ...props
+    },
+    ref,
+  ) => {
+    let Comp: React.ElementType;
+    const isLink = Boolean(href);
+    const isExternal = external || target === "_blank";
+
+    if (asChild) {
+      Comp = Button.Slot;
+    } else if (isLink) {
+      Comp = "a";
+    } else {
+      Comp = "button";
+    }
+
+    // Handle security for external links
+    const linkProps = isLink
+      ? {
+        href,
+        target: target || (isExternal ? "_blank" : undefined),
+        rel: rel || (isExternal ? "noopener noreferrer" : undefined),
+      }
+      : {};
+
     return (
       <Comp
         className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
+        {...linkProps}
         {...props}
       />
     );
   },
 );
+
 CustomButton.displayName = "Button";
 
 export { CustomButton as Button, buttonVariants };
