@@ -53,7 +53,7 @@ export const BackgroundMusic: React.FC<BackgroundMusicProps> = ({
     const handlePause = () => {
       setIsPlaying(false);
     };
-    console.error(error);
+    console.log(error);
 
     audio.addEventListener("canplay", handleCanPlay);
     audio.addEventListener("canplaythrough", handleCanPlayThrough);
