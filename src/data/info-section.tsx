@@ -1,14 +1,13 @@
 import Space from "@assets/space.jpg";
 import LockIn from "@assets/Locked-in_3.jpg";
 import { InfoSectionProps } from "@/components/home";
-import { getTimeBasedGreeting } from "@/helpers";
 
 export const INFO_DATA: (InfoSectionProps & { id: number })[] = [
   {
     id: 1,
     imageSrc: Space,
     imageAlt: "space-image",
-    title: `${getTimeBasedGreeting()}, I'm Saif Alqady \nand this is my SPACE`,
+    title: "{{GREETING}}, I'm Saif Alqady \nand this is my SPACE",
     subTitle: "Projects, thoughts, experiments—capturing the process.",
     description:
       "This is my digital workshop—a living archive of ideas in motion. Here, I document the journey of creation: experiments, iterations, and the small breakthroughs that shape meaningful work. It's not about polished perfection, but the honest path from 'what if' to 'why not.' Consider this an open invitation to explore the process behind the results.",
