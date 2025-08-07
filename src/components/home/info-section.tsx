@@ -2,12 +2,13 @@ import Image, { StaticImageData } from "next/image";
 import AnimatedText from "@/components/ui/animated-text";
 import React, { ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { DynamicTitle } from "./dynamic-title";
 
 export interface InfoSectionProps {
   imageSrc: string | StaticImageData;
   imageAlt: string;
   imageWidth?: number;
-  title: ReactNode;
+  title: string;
   subTitle?: ReactNode;
   description: ReactNode;
   containerClassName?: string;
@@ -48,7 +49,7 @@ export const InfoSection: React.FC<InfoSectionProps> = ({
           delay={animationDelay}
           className="text-title xl:text-left text-center font-semibold  xl:mt-20 mt-0 leading-snug"
         >
-          {title}
+          <DynamicTitle text={title} />
         </AnimatedText>
 
         {subTitle && (
